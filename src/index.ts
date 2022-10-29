@@ -1,15 +1,14 @@
-import 'reflect-metadata';
-import express from "express";
-import { router } from "./routes";
-import createConnection from './database'
+import express from 'express'
+import { Request, Response, NextFunction } from 'express'
 
-createConnection();
 
-const server = express()
-server.use(express.json())
+const server = express();
 
-server.use(router)
+server.get('/',(req:Request, res: Response, next: NextFunction)=> {
+  return res.json({mensaje: 'Bienvenido a nuestra API'})
 
-server.listen(4000, ()=> {
-  console.log('API rodando en la puerta 4000')
 })
+server.listen(4000,()=>{
+  console.log('api en la puerta 4000')
+})
+console.log('typescript')
